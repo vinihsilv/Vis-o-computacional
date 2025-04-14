@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-dir = './images/'
+dir = './Vis-o-computacional/images/'
 # Carregans imagem
 for arquivo in os.listdir(dir):
     if arquivo.endswith('.jpeg'):

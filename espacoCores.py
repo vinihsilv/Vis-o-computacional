@@ -2,7 +2,7 @@ import os
 import cv2
 import matplotlib.pyplot as plt
 
-dir = './images/'
+dir = './Vis-o-computacional/images/'
 # Carregans imagem
 for arquivo in os.listdir(dir):
     if arquivo.endswith('.jpeg'):
