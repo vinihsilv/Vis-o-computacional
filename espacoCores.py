@@ -3,7 +3,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 dir = './Vis-o-computacional/images/'
-# Carregans imagem
+
 for arquivo in os.listdir(dir):
     if arquivo.endswith('.jpeg'):
         img = cv2.imread(dir + arquivo)

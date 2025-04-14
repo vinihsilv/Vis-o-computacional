@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 dir = './Vis-o-computacional/images/'
-# Carregans imagem
+
 for arquivo in os.listdir(dir):
     if arquivo.endswith('.jpeg'):
         img = cv2.imread(dir + arquivo)
@@ -14,7 +14,6 @@ for arquivo in os.listdir(dir):
 
 
 
-        #Convertendo para preto e branco (RGB -> Gray Scale -> BW)
         img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
         a = img_gray.max()
         _, thresh = cv2.threshold(img_gray, a/2*1.7, a,cv2.THRESH_BINARY_INV)
@@ -24,17 +23,17 @@ for arquivo in os.listdir(dir):
         kernel = np.ones((tamanhoKernel,tamanhoKernel), np.uint8)
         thresh_open = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
 
-        #Filtro de ruído (bluring)
+        
         img_blur = cv2.blur(img_gray, ksize=(tamanhoKernel,tamanhoKernel))
 
-        # Detecção borda com Canny (sem blurry)
+        
         edges_gray = cv2.Canny(image=img_gray, threshold1=a/2, threshold2=a/2)
-        # Detecção borda com Canny (com blurry)
+        
         edges_blur = cv2.Canny(image=img_blur, threshold1=a/2, threshold2=a/2)
 
 
 
-        # contorno
+        
         contours, hierarchy = cv2.findContours(
                                         image = thresh,
                                         mode = cv2.RETR_TREE,
@@ -45,7 +44,7 @@ for arquivo in os.listdir(dir):
                                 color = (255, 0, 0), thickness = 2)
 
 
-        #plot imagens
+       
         imagens = [img,img_blur,img_gray,edges_gray,edges_blur,thresh,thresh_open,final]
         formatoX = math.ceil(len(imagens)**.5)
         if (formatoX**2-len(imagens))>formatoX:

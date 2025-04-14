@@ -5,13 +5,13 @@ import numpy as np
 import math
 
 dir = './Vis-o-computacional/images/'
-# Carregans imagem
+
 for arquivo in os.listdir(dir):
     if arquivo.endswith('.jpeg'):
         img = cv2.imread(dir + arquivo)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        #Filtro de ruído (bluring)
+       
         img_blur = cv2.blur(img,(5,5))
         img_gray = cv2.cvtColor(img_blur, cv2.COLOR_RGB2GRAY)
         a = img_gray.max()
@@ -25,7 +25,7 @@ for arquivo in os.listdir(dir):
         img_tophat = cv2.morphologyEx(thresh, cv2.MORPH_TOPHAT, kernel)
         img_blackhat = cv2.morphologyEx(thresh, cv2.MORPH_BLACKHAT, kernel)
 
-        # Plot the images
+        
         imagens = [img, img_blur,  img_gray,thresh,img_erode,img_dilate, img_open, img_close, img_grad,
                 img_tophat, img_blackhat]
 
